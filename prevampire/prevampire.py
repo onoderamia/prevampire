@@ -137,6 +137,8 @@ def take_channel (img_dir, print_image = 0):
         img_max = np.max(img, axis=0) 
 
         result_images.append(np.array(img_max))
+        
+    
 
     if print_image > 0:
         for i in range(print_image):
@@ -239,7 +241,7 @@ def apply_and_save_all_thresholds(img_arr, img_name_list, output_dir, num_imgs =
 
 ## RETURN IMG NAMES DONE
 ## literally WHAT
-def apply_threshold(img_arr, img_name_list, label = 'threshli', print_image = 0, method = 'li'):
+def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', print_image = 0, ):
     """
     Apply a thresholding method to a list of images and return segmented images.
 
@@ -290,7 +292,7 @@ def apply_threshold(img_arr, img_name_list, label = 'threshli', print_image = 0,
     if print_image > 0:
         for i in range(print_image):
             plt.imshow(segmented_images[i])
-            plt.show()  
+            plt.show() 
 
     return segmented_images, seg_name_list
 
@@ -385,6 +387,8 @@ def display_img_side(array1, array2, index, label1, label2):
 ## EDIT THIS BECUASE THE TIF MAY BE DIFF DONE
 ## THIS SHOULD NOT BE USED FOR THE BRIGHTENING FR
 ## SEPARATE FORLESS CONFUSION DONE
+
+## FOR HAWLEY SINICE SHE MAKES .npy for ebery image
 def load_npy_imgs(directory):
     """
     Load files from a given directory of .npy files.
@@ -429,6 +433,12 @@ def load_tif_imgs(directory):
     loaded_data = []
     for file_path in file_paths:
         loaded_data.append(io.imread(file_path))
+        
+    loaded_data = np.array(loaded_data)
+    
+    for i in range(len(img_name_list)):
+        basename, extension = os.path.splitext(img_name_list[i])
+        img_name_list[i] = basename + '.npy'
 
     return loaded_data, img_name_list
 
@@ -472,4 +482,4 @@ def get_skel_df(skel_arr, skel_name_list, show = 0):
 
 def save_df(dataframe, name, output_dir):
     name = name + '.csv'
-    dataframe.csv(os.path.join(output_dir, name))
+    dataframe.to_csv(os.path.join(output_dir, name))

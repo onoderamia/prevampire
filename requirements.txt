@@ -340,3 +340,5 @@ matplotlib
 scikit-image
 vampire
 skan
+pandas
+scipy

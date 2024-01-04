@@ -10,7 +10,8 @@ setup(
         'scikit-image',
         'vampire',
         'skan',
-        'scikit-image',
+        'pandas',
+        'scipy', 
     ],
     entry_points={
         'console_scripts': [
@@ -22,5 +23,3 @@ setup(
     description='Supplementary Package to Apply to existing VAMPIRE package pipeline.',
     url='https://github.com/onoderamia/prevampire',
 )
-
-tests/test_data/rawimgtif
