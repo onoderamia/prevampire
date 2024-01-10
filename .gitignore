@@ -1,2 +1,3 @@
 .DS_Store
 !/prevampire
+__pycache__
