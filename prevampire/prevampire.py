@@ -239,8 +239,6 @@ def apply_and_save_all_thresholds(img_arr, img_name_list, output_dir, num_imgs =
         fig.savefig(fig_path)
         plt.close('all')
 
-## RETURN IMG NAMES DONE
-## literally WHAT
 def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', print_image = 0, ):
     """
     Apply a thresholding method to a list of images and return segmented images.
@@ -272,11 +270,13 @@ def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', p
     """
     _check_equal_lengths(img_arr, img_name_list)
     thresh_function = threshold_functions.get(method, filters.threshold_li)
-    seg_name_list = img_name_list.copy()
+    
+    seg_name_list = []
 
-    for i in range(len(seg_name_list)):
-        base_name, extension = os.path.splitext(seg_name_list[i])
-        seg_name_list[i] = base_name + '_' + label + extension
+    for i in range(len(img_name_list)):
+        base_name, extension = os.path.splitext(img_name_list[i])
+        name = base_name + '_' + label + extension
+        seg_name_list.append(name)
 
     segmented_images = []
 
@@ -296,7 +296,6 @@ def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', p
 
     return segmented_images, seg_name_list
 
-## RETURN NAMES OF THE IMG
 def skeletonize_images(thresh_arr, img_name_list, label = 'skel', print_image = 0):
     """
     Skeletonize a list of binary images and return the skeletonized images.
@@ -323,11 +322,12 @@ def skeletonize_images(thresh_arr, img_name_list, label = 'skel', print_image = 
     """
     _check_equal_lengths(thresh_arr, img_name_list)
 
-    skel_name_list = img_name_list.copy()
+    skel_name_list = []
 
-    for i in range(len(skel_name_list)):
-        base_name, extension = os.path.splitext(skel_name_list[i])
-        skel_name_list[i] = base_name + '_' + label + extension
+    for i in range(len(img_name_list)):
+        base_name, extension = os.path.splitext(img_name_list[i])
+        name = base_name + '_' + label + extension
+        skel_name_list.append(name)
 
     skel_imgs = []
 
