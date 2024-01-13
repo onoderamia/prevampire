@@ -12,9 +12,9 @@ from pandas.testing import assert_frame_equal
 
 import warnings
 
-raw_img_file = '../prevampire/tests/data/rawimgtif/'
-input_file = '../prevampire/tests/data/input/'
-output_file = '../prevampire/tests/data/output/'
+raw_img_file = '/home/runner/work/prevampire/tests/data/rawimgtif/'
+input_file = '/home/runner/work/prevampire/tests/data/input/'
+output_file = '/home/runner/work/prevampire/tests/data/output/'
 
 def _remove_all(directory):
     arr = os.listdir(directory)
@@ -57,8 +57,8 @@ def test_take_channel():
     img, name = pv.take_channel(input_file)
     img = np.array(img)
     name = np.array(name)
-    img_assert = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name_assert = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    img_assert = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name_assert = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
 
     _remove_all(input_file)
     
@@ -66,8 +66,8 @@ def test_take_channel():
     npt.assert_equal(name, name_assert)
 
 def test_save_npy():
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
     pv.save_npy(imgs, name, output_file)
     arr = os.listdir(output_file)
 
@@ -79,8 +79,8 @@ def test_save_npy():
 
 def test_save_tif():
     warnings.filterwarnings("ignore", category=UserWarning, message=".*low contrast image.*")
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
     pv.save_tif(imgs, name, output_file)
 
     for i in range(len(name)):
@@ -94,8 +94,8 @@ def test_save_tif():
     npt.assert_equal(name, arr)
 
 def test_apply_and_save_all_thresholds():
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
 
     pv.apply_and_save_all_thresholds(imgs, name, output_file)
 
@@ -106,13 +106,13 @@ def test_apply_and_save_all_thresholds():
     npt.assert_equal(len(check), 5)
 
 def test_apply_threshold():
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
  
     seg1, name1 = pv.apply_threshold(imgs, name)
 
-    seg2 = np.load('./prevampire/tests/data/assertdata/threshli_img_arr.npy')
-    name2 = np.load('./prevampire/tests/data/assertdata/threshli_names.npy')
+    seg2 = np.load('/home/runner/work/prevampire/tests/data/assertdata/threshli_img_arr.npy')
+    name2 = np.load('/home/runner/work/prevampire/tests/data/assertdata/threshli_names.npy')
 
     np.array(seg1)
     np.array(name1)
@@ -122,24 +122,24 @@ def test_apply_threshold():
 
 
 def test_skeletonize_images():
-    imgs = np.load('./prevampire/tests/data/assertdata/threshli_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/threshli_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
 
     skel1, name1 = pv.skeletonize_images(imgs, name)
 
-    skel2 = np.load('./prevampire/tests/data/assertdata/skel_img_arr.npy')
-    name2 = np.load('./prevampire/tests/data/assertdata/skel_names.npy')
+    skel2 = np.load('/home/runner/work/prevampire/tests/data/assertdata/skel_img_arr.npy')
+    name2 = np.load('/home/runner/work/prevampire/tests/data/assertdata/skel_names.npy')
     
     npt.assert_equal(skel1, skel2)
     npt.assert_equal(name1, name2)
  
 
 def test_load_npy_imgs():
-    copy_tree('./prevampire/tests/data/denoisednpy', input_file)
+    copy_tree('/home/runner/work/prevampire/tests/data/denoisednpy', input_file)
     data, names = pv.load_npy_imgs(input_file)
 
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
 
     _remove_all(input_file) 
 
@@ -153,11 +153,11 @@ def test_load_npy_imgs():
     npt.assert_array_equal(np.sort(flattened_data), np.sort(flattened_imgs))
 
 def test_load_tif_imgs():
-    copy_tree('./prevampire/tests/data/denoisedtif', input_file)
+    copy_tree('/home/runner/work/prevampire/tests/data/denoisedtif', input_file)
     data, names = pv.load_tif_imgs(input_file)
 
-    imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/denoised_names.npy')
 
     _remove_all(input_file)
 
@@ -165,12 +165,12 @@ def test_load_tif_imgs():
     npt.assert_equal(names, name)
 
 def test_get_skel_df():
-    imgs = np.load('./prevampire/tests/data/assertdata/skel_img_arr.npy')
-    name = np.load('./prevampire/tests/data/assertdata/skel_names.npy')
+    imgs = np.load('/home/runner/work/prevampire/tests/data/assertdata/skel_img_arr.npy')
+    name = np.load('/home/runner/work/prevampire/tests/data/assertdata/skel_names.npy')
 
     df1 = pv.get_skel_df(imgs, name)
 
-    df2 = pd.read_csv('./prevampire/tests/data/assertdata/skel_df.csv')
+    df2 = pd.read_csv('/home/runner/work/prevampire/tests/data/assertdata/skel_df.csv')
 
     assert_frame_equal(df1, df1)
 
