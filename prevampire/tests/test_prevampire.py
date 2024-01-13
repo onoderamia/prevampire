@@ -12,9 +12,9 @@ from pandas.testing import assert_frame_equal
 
 import warnings
 
-raw_img_file = './prevampire/tests/data/rawimgtif/'
-input_file = './prevampire/tests/data/input/'
-output_file = './prevampire/tests/data/output/'
+raw_img_file = '../prevampire/tests/data/rawimgtif/'
+input_file = '../prevampire/tests/data/input/'
+output_file = '../prevampire/tests/data/output/'
 
 def _remove_all(directory):
     arr = os.listdir(directory)
