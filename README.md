@@ -28,19 +28,43 @@ Create a file which has all the .tif images you want to analyze.
 
 ```python
 import prevampire as pv  # recommended import signature
-file_dir = 'file/path'  # file path to .tif images
+raw_dir = 'file/path'  # file path to .tif images
 ```
 
- Below are a list of methods you want to apply. Take a look at the method comments in prevampire.py within the prevampire file for more information. 
+Below are a list of methods you want to apply. Take a look at the method comments in prevampire.py within the prevampire file for more information. 
 
  ```python
-result_img, names = take_channel(file_list, print_image = 1)
 
-result_img, names = take_channel(file_list, print_image = 1)  # take the iba, print_image (optional)
+max_imgs, org_names = take_channel(raw_dir, print_image = 1)
+
+threshall_dir = 'new/file/path' # new file
+apply_and_save_all_thresholds(max_imgs, org_names, threshall_dir)
+
+thresh_imgs, thresh_names = apply_threshold(max_imgs, org_names, print_image = 1)
+
+skel_imgs, skel_names = skeletonize_images(thresh_imgs, thresh_names, print_image = 1)
+
+skel_df = get_skel_df(skel_imgs, skel_name, show = 1)
 
 ```
 
+Below are a list of supplementary methods you can use throughout the pipeline above. 
 
+ ```python
+
+save_tif(result_img, names, '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/denoisedtif')
+
+save_npy(result_img, names, '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/denoisednpy')
+
+load_tif_imgs()
+
+load_npy_imgs()
+
+display_img_side(thresh_img, skel_imgs, 2, 'thresh', 'skel')
+
+save_df(skel_df, 'skel_df', '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/assertdata')
+
+```
 
 
 
