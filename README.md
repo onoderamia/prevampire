@@ -65,11 +65,11 @@ thresh_imgs, thresh_names = pv.load_npy_imgs(thresh_npy_dir)
 pv.display_img_side(thresh_imgs, skel_imgs, 0, 'thresh', 'skel')
 
 df_dir = 'new/new/new/new/file/path' # new file
-save_df(skel_df, 'skel_df', df_dir)
+pv.save_df(skel_df, 'skel_df', df_dir)
 
 ```
 
-
-
 ## References
+1. Lin, O. VAMPIRE, (2020), GitHub repository, https://github.com/tengjuilin/vampire-analysis
+2. Lin, C. (2021). Skeletonization and fractal analysis of microglial cells in the neonatal brain. [Doctoral dissertation, University of Washington]. ResearchWorks Archive at the University of Washington. https://digital.lib.washington.edu/researchworks/bitstream/handle/1773/47957/Lin_washington_0250 O_23542.pdf?sequence=1&isAllowed=y
 
