@@ -239,7 +239,7 @@ def apply_and_save_all_thresholds(img_arr, img_name_list, output_dir, num_imgs =
         fig.savefig(fig_path)
         plt.close('all')
 
-def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', print_image = 0, ):
+def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', print_image = 0):
     """
     Apply a thresholding method to a list of images and return segmented images.
 
