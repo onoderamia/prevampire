@@ -20,7 +20,7 @@ If Python is installed on your machine, type the following line into your comman
 pip install vampire-analysis
 ```
 
-Otherwise, fork the package to ... **ASK NELS**
+Otherwise, clone the package to locally and do python setup.py intall (bash cell) within the directory.
 
 ## Getting started
 
