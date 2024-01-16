@@ -79,8 +79,9 @@ def test_take_channel():
     # _remove_all(input_file)
     _remove_dir()
     
-    npt.assert_equal(img, img_assert)
     npt.assert_equal(name, name_assert)
+    npt.assert_equal(img, img_assert)
+    # npt.assert_equal(name, name_assert)
 
 
 def test_save_npy():
