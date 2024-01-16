@@ -35,16 +35,16 @@ Below are a list of methods you want to apply. Take a look at the method comment
 
  ```python
 
-max_imgs, org_names = take_channel(raw_dir, print_image = 1)
+max_imgs, org_names = pv.take_channel(raw_dir, print_image = 1)
 
 threshall_dir = 'new/file/path' # new file
-apply_and_save_all_thresholds(max_imgs, org_names, threshall_dir)
+pv.apply_and_save_all_thresholds(max_imgs, org_names, threshall_dir)
 
-thresh_imgs, thresh_names = apply_threshold(max_imgs, org_names, print_image = 1)
+thresh_imgs, thresh_names = pv.apply_threshold(max_imgs, org_names, print_image = 1)
 
-skel_imgs, skel_names = skeletonize_images(thresh_imgs, thresh_names, print_image = 1)
+skel_imgs, skel_names = pv.skeletonize_images(thresh_imgs, thresh_names, print_image = 1)
 
-skel_df = get_skel_df(skel_imgs, skel_name, show = 1)
+skel_df = pv.get_skel_df(skel_imgs, skel_name, show = 1)
 
 ```
 
@@ -52,17 +52,20 @@ Below are a list of supplementary methods you can use throughout the pipeline ab
 
  ```python
 
-save_tif(result_img, names, '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/denoisedtif')
+thresh_tif_dir = 'new/new/file/path' # new file
+pv.save_tif(thresh_imgs, thresh_names, thresh_tif_dir)
 
-save_npy(result_img, names, '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/denoisednpy')
+thresh_npy_dir = 'new/new/new/file/path' # new file
+pv.save_npy(thresh_imgs, thresh_names, thresh_npy_dir)
 
-load_tif_imgs()
+thresh_imgs, thresh_names = pv.load_tif_imgs(thresh_tif_dir) 
 
-load_npy_imgs()
+thresh_imgs, thresh_names = pv.load_npy_imgs(thresh_npy_dir)
 
-display_img_side(thresh_img, skel_imgs, 2, 'thresh', 'skel')
+pv.display_img_side(thresh_imgs, skel_imgs, 0, 'thresh', 'skel')
 
-save_df(skel_df, 'skel_df', '/Users/miaonodera/Desktop/Extracirriculars/nance-lab/prevampire/prevampire/tests/data/assertdata')
+df_dir = 'new/new/new/new/file/path' # new file
+save_df(skel_df, 'skel_df', df_dir)
 
 ```
 
