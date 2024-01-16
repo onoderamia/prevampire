@@ -20,7 +20,11 @@ If Python is installed on your machine, type the following line into your comman
 pip install vampire-analysis
 ```
 
-Otherwise, clone the package to locally and do python setup.py intall (bash cell) within the directory.
+Otherwise, clone the package locally and execute below in bash while in the prevampire directory.
+
+```bash
+python setup.py install
+```
 
 ## Getting started
 
