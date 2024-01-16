@@ -23,6 +23,7 @@ def _remove_all(directory):
         os.remove(file)
 
 def test_remove_files():
+    os.mkdir(input_file)
     copy_tree(raw_img_file, input_file)
     arr = os.listdir(raw_img_file)
     arr = [x for x in arr if 'cor' not in x]
@@ -36,7 +37,13 @@ def test_remove_files():
 
     npt.assert_equal(actual, arr)
 
+    os.rmdir(input_file)
+
+
+
 def test_move_files():
+    os.mkdir(input_file)
+    os.mkdir(output_file)
     copy_tree(raw_img_file, input_file)
     arr = os.listdir(raw_img_file)
     arr1 = [x for x in arr if 'hipca' in x]
@@ -51,8 +58,12 @@ def test_move_files():
     npt.assert_equal(arr1, check1)
     npt.assert_equal(arr2, check2)
 
+    os.rmdir(input_file)
+    os.rmdir(output_file)
+
 
 def test_take_channel():
+    os.mkdir(input_file)
     copy_tree(raw_img_file, input_file)
     img, name = pv.take_channel(input_file)
     img = np.array(img)
@@ -65,7 +76,10 @@ def test_take_channel():
     npt.assert_equal(img, img_assert)
     npt.assert_equal(name, name_assert)
 
+    os.rmdir(input_file)
+
 def test_save_npy():
+    os.mkdir(output_file)
     imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
     pv.save_npy(imgs, name, output_file)
@@ -77,7 +91,10 @@ def test_save_npy():
 
     npt.assert_equal(np.sort(name), np.sort(arr))
 
+    os.rmdir(output_file)
+
 def test_save_tif():
+    os.mkdir(output_file)
     warnings.filterwarnings("ignore", category=UserWarning, message=".*low contrast image.*")
     imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
@@ -93,7 +110,10 @@ def test_save_tif():
 
     npt.assert_equal(name, arr)
 
+    os.rmdir(output_file)
+
 def test_apply_and_save_all_thresholds():
+    os.mkdir(output_file)
     imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
 
@@ -105,7 +125,10 @@ def test_apply_and_save_all_thresholds():
 
     npt.assert_equal(len(check), 5)
 
+    os.rmdir(output_file)
+
 def test_apply_threshold():
+
     imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
  
@@ -119,6 +142,8 @@ def test_apply_threshold():
 
     npt.assert_equal(seg1, seg2)
     npt.assert_equal(np.sort(name1), np.sort(name2))
+
+    
 
 
 def test_skeletonize_images():
@@ -135,6 +160,8 @@ def test_skeletonize_images():
  
 
 def test_load_npy_imgs():
+    os.mkdir(input_file)
+
     copy_tree('./prevampire/tests/data/denoisednpy', input_file)
     data, names = pv.load_npy_imgs(input_file)
 
@@ -152,7 +179,11 @@ def test_load_npy_imgs():
     npt.assert_array_equal(np.sort(names), np.sort(name))
     npt.assert_array_equal(np.sort(flattened_data), np.sort(flattened_imgs))
 
+    os.rmdir(input_file)
+
 def test_load_tif_imgs():
+    os.mkdir(input_file)
+
     copy_tree('./prevampire/tests/data/denoisedtif', input_file)
     data, names = pv.load_tif_imgs(input_file)
 
@@ -163,6 +194,8 @@ def test_load_tif_imgs():
 
     npt.assert_equal(data, imgs)
     npt.assert_equal(names, name)
+
+    os.rmdir(input_file)
 
 def test_get_skel_df():
     imgs = np.load('./prevampire/tests/data/assertdata/skel_img_arr.npy')
