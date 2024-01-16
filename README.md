@@ -31,20 +31,26 @@ import prevampire as pv  # recommended import signature
 raw_dir = 'file/path'  # file path to .tif images
 ```
 
-Below are a list of methods you want to apply to get to the desired skeletonization and vampire df and shape modes. Check out prevampire.py for more in depth method comments. 
+## Applying PREVAMPIRE Package
+
+Below are a list of methods you want to apply to get to the desired skeletonization and vampire df and shape modes. Check out [prevampire.py](https://github.com/onoderamia/prevampire/blob/main/prevampire/prevampire.py) for more in depth method comments. 
+
+For a specific dataset, the code uses two .npy arrays to keep track of images while applying thresholding and skeletonization. The image array and the name array. These two arrays are always returned in a specific method. 
+
+To go more in depth to skeletonization, check out the [Skan package](https://skeleton-analysis.org/stable/index.html#) used to find the method desired. 
 
  ```python
 
-max_imgs, org_names = pv.take_channel(raw_dir, print_image = 1)
+max_imgs, org_names = pv.take_channel(raw_dir, print_image = 1) # maximize image to only include iba
 
 threshall_dir = 'new/file/path' # new file
-pv.apply_and_save_all_thresholds(max_imgs, org_names, threshall_dir)
+pv.apply_and_save_all_thresholds(max_imgs, org_names, threshall_dir) # apply all thresholds to a specific subset in the dataset and save them to a defined directory
 
-thresh_imgs, thresh_names = pv.apply_threshold(max_imgs, org_names, print_image = 1)
+thresh_imgs, thresh_names = pv.apply_threshold(max_imgs, org_names, label = 'label', method = 'method' print_image = 1) # apply chosen threshold to maximized images (defaults to li)
 
-skel_imgs, skel_names = pv.skeletonize_images(thresh_imgs, thresh_names, print_image = 1)
+skel_imgs, skel_names = pv.skeletonize_images(thresh_imgs, thresh_names, print_image = 1) 
 
-skel_df = pv.get_skel_df(skel_imgs, skel_name, show = 1)
+skel_df = pv.get_skel_df(skel_imgs, skel_name, show = 1) # get dataframe for skeletonized images
 
 ```
 
@@ -71,7 +77,7 @@ pv.save_df(skel_df, 'skel_df', output_dir) # save dataframe in defined directory
 
 ## Applying to VAMPIRE package
 
-Once you get the thresholded images and names, you can then choose to apply these images to the VAMPIRE package. 
+Once you get the thresholded images and names, you can then choose to apply these images to the [VAMPIRE package](https://vampire.readthedocs.io/en/latest/index.html). 
 
  ```python
 
@@ -102,4 +108,6 @@ quickstart.build_models(build_info_df, random_state=1) # get shape mode
 [1] Lin, O. VAMPIRE, (2020), GitHub repository, https://github.com/tengjuilin/vampire-analysis
 
 [2] Lin, C. (2021). Skeletonization and fractal analysis of microglial cells in the neonatal brain. [Doctoral dissertation, University of Washington]. ResearchWorks Archive at the University of Washington. https://digital.lib.washington.edu/researchworks/bitstream/handle/1773/47957/Lin_washington_0250O_23542.pdf?sequence=1&isAllowed=y
+
+[3] Juan Nunez-Iglesias, Adam J. Blanch, Oliver Looker, Matthew W. Dixon, and Leann Tilley. A new Python library to analyse skeleton images confirms malaria parasite remodelling of the red blood cell membrane skeleton. PeerJ, 6:e4312, 2018. doi:10.7717/peerj.4312.
 
