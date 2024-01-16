@@ -27,15 +27,16 @@ Otherwise, fork the package to ... **ASK NELS**
 Create a file which has all the .tif images you want to analyze.
 
 ```python
->>> import prevampire as pv  # recommended import signature
+import prevampire as pv  # recommended import signature
+file_dir = 'file/path'  # file path to .tif images
 ```
 
  Below are a list of methods you want to apply. Take a look at the method comments in prevampire.py within the prevampire file for more information. 
 
  ```python
->>> file_dir = 'file/path'  # file path to .tif images
->>> result_img, names = take_channel(file_list, print_image = 1)  # take the iba, print_image (optional)
->>> result_img, names = take_channel(file_list, print_image = 1)  # take the iba, print_image (optional)
+result_img, names = take_channel(file_list, print_image = 1)
+
+result_img, names = take_channel(file_list, print_image = 1)  # take the iba, print_image (optional)
 
 ```
 
