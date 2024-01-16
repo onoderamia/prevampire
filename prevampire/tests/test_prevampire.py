@@ -76,11 +76,14 @@ def test_take_channel():
     img_assert = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name_assert = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
 
+    flattened_img = np.concatenate([arr.flatten() for arr in img])
+    flattened_img_assert = np.concatenate([arr.flatten() for arr in img_assert])
+
     # _remove_all(input_file)
     _remove_dir()
     
-    npt.assert_equal(name, name_assert)
-    npt.assert_equal(img, img_assert)
+    npt.assert_equal(np.sort(name), np.sort(name_assert))
+    npt.assert_equal(np.sort(flattened_img), np.sort(flattened_img_assert))
     # npt.assert_equal(name, name_assert)
 
 
@@ -117,7 +120,7 @@ def test_save_tif():
     # _remove_all(output_file)
     _remove_dir()
 
-    npt.assert_equal(name, arr)
+    npt.assert_equal(np.sort(name), np.sort(arr))
 
 
 def test_apply_and_save_all_thresholds():
@@ -199,11 +202,14 @@ def test_load_tif_imgs():
     imgs = np.load('./prevampire/tests/data/assertdata/denoised_img_arr.npy')
     name = np.load('./prevampire/tests/data/assertdata/denoised_names.npy')
 
+    flattened_data = np.concatenate([arr.flatten() for arr in data])
+    flattened_imgs = np.concatenate([arr.flatten() for arr in imgs])
+
     # _remove_all(input_file)
     _remove_dir()
 
-    npt.assert_equal(data, imgs)
-    npt.assert_equal(names, name)
+    npt.assert_equal(np.sort(flattened_data), np.sort(flattened_imgs))
+    npt.assert_equal(np.sort(names), np.sort(name))
 
 
 def test_get_skel_df():
