@@ -1,6 +1,6 @@
 # `prevampire`
 
-![GitHub](ADDHERE)
+![GitHub](https://img.shields.io/github/license/onoderamia/prevampire)
 [![Documentation Status](ADDHERE)](ADDHERE)
 ![PyPI](ADDHERE)
 
