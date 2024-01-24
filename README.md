@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/onoderamia/prevampire)
 [![Documentation Status](ADDHERE)](ADDHERE)
-![PyPI](ADDHERE)
+![Tests](https://github.com/onoderamia/prevampire/actions/workflows/python-package.yml/badge.svg?branch=main)
 
 PREVAMPIRE is a package made to work in supplementary with the [VAMPIRE package](https://github.com/tengjuilin/vampire-analysis). This package contains methods that expedite the user's preparation for the VAMPIRE pipeline, and limits the amount of code interaction needed for someone new to python. 
 
