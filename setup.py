@@ -22,4 +22,6 @@ setup(
     author_email='mconodera@gmail.com',
     description='Supplementary Package to Apply to existing VAMPIRE package pipeline.',
     url='https://github.com/onoderamia/prevampire',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
 )
