@@ -16,7 +16,7 @@ Cell morphology is used as a support to show the effectivity of therapudics.
 If Python is installed on your machine, type the following line into your command prompt to install via [PyPI](ADDHERE):
 
 ```bash
-pip install vampire-analysis
+pip install prevampire
 ```
 
 Otherwise, clone the package locally and execute below in bash while in the prevampire directory.
