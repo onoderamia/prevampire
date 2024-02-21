@@ -5,3 +5,4 @@ vampire
 skan
 pandas
 scipy
+numpydoc
