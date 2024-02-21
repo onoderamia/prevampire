@@ -6,3 +6,4 @@ skan
 pandas
 scipy
 numpydoc
+pydata-sphinx-theme
