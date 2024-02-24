@@ -17,10 +17,3 @@ Specifically, this package will enable users to:
    :exclude: prevampire.prevampire._check_equal_lengths, prevampire.prevampire._get_file_path_list, 
              prevampire.prevampire._create_prop_df, prevampire.prevampire._draw_branch_type
    
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
