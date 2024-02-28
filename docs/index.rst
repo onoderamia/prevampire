@@ -1,13 +1,12 @@
 Welcome to prevampire's documentation!
 ====================================
 
-The goal of this package is to .... EDIT
-
-Specifically, this package will enable users to:
+This package will enable users to: apply preprocessing functions to put it through the VAMPIRE morpholohy pipeline to analyze shape mode differences. 
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
    functions
 
 .. Indices and tables
