@@ -10,10 +10,15 @@ The goal of this package is to .... EDIT
 
 Specifically, this package will enable users to:
 
-- EDIT
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-.. automodule:: prevampire.prevampire
-   :members:
-   :exclude: prevampire.prevampire._check_equal_lengths, prevampire.prevampire._get_file_path_list, 
-             prevampire.prevampire._create_prop_df, prevampire.prevampire._draw_branch_type
-   
+   functions
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
