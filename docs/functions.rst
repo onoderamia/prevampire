@@ -1,3 +1,6 @@
+Function Reference
+==================
+
 .. automodule:: prevampire
     :members:
     :undoc-members:
