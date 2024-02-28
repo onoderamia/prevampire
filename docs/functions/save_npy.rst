@@ -1,6 +1,6 @@
 prevampire.save\_npy
 ========================================
 
-.. currentmodule:: prevampire
+.. currentmodule:: prevampire.prevampire
 
 .. autofunction:: save_npy
