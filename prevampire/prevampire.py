@@ -38,12 +38,17 @@ def _check_equal_lengths(arr1, arr2):
     """
     Check if the lengths of two arrays are equal.
 
-    Parameters:
-    - arr1 (list or array-like): First array to compare.
-    - arr2 (list or array-like): Second array to compare.
+    Parameters
+    ----------
+    arr1 : list or array-like
+        First array to compare.
+    arr2 : list or array-like
+        Second array to compare.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the two arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the two arrays are not equal.
     """
     if len(arr1) != len(arr2):
          raise UnequalLengthError("Image and name arrays must have the same length.")
@@ -52,13 +57,19 @@ def _get_file_path_list(file_dir, keyword = None, fullpath = True):
     """
     Get a list of files in a given directory.
 
-    Parameters:
-    - file_dir (str): The directory to retrieve files from.
-    - keyword (str, optional): A keyword to filter files. Defaults to None.
-    - fullpath (bool, optional): Whether to include the full path in the result. Defaults to True.
+    Parameters
+    ----------
+    file_dir : str
+        The directory to retrieve files from.
+    keyword : str, optional
+        A keyword to filter files. Defaults to None.
+    fullpath : bool, optional
+        Whether to include the full path in the result. Defaults to True.
 
-    Returns:
-    - list: A list of file names in the directory.
+    Returns
+    -------
+    list
+        A list of file names in the directory.
     """
     arr = os.listdir(file_dir)
 
@@ -86,9 +97,12 @@ def remove_files(file_dir, delete):
     """
     Remove specific files from a given file directory.
 
-    Parameters:
-    - file_dir (str): The directory to remove files from.
-    - delete (str): Substring to match files for deletion.
+    Parameters
+    ----------
+    file_dir : str
+        The directory to remove files from.
+    delete : str
+        Substring to match files for deletion.
     """
     file_path_list = _get_file_path_list(file_dir, delete)
 
@@ -99,10 +113,14 @@ def move_files(file_dir, target_dir, takeout):
     """
     Move specific files from one directory to another.
 
-    Parameters:
-    - file_dir (str): The directory to take files from.
-    - takeout (str): Substring to match files to take out.
-    - target_dir (str): The directory to place files in.
+    Parameters
+    ----------
+    file_dir : str
+        The directory to take files from.
+    takeout : str
+        Substring to match files to take out.
+    target_dir : str
+        The directory to place files in.
     """
     file_path_list = _get_file_path_list(file_dir, takeout)
 
@@ -115,12 +133,17 @@ def take_channel (img_dir, print_image = 0):
     """
     Process images from a given directory, creating maximum intensity projections.
 
-    Parameters:
-    - img_dir (str): The directory containing raw tif images.
-    - print_image (int, optional): Number of images to display. Defaults to 0.
+    Parameters
+    ----------
+    img_dir : str
+        The directory containing raw tif images.
+    print_image : int, optional
+        Number of images to display. Defaults to 0.
 
-    Returns:
-    - tuple: A tuple containing two elements:
+    Returns
+    -------
+    tuple
+        A tuple containing two elements:
         - result_images (list): A list of 2D arrays representing maximum intensity projection images.
         - img_name_list (list): A 1D array of corresponding image names.
     """
@@ -152,17 +175,24 @@ def save_npy(img_arr, img_name_list, save_location):
     """
     Save NumPy arrays as .npy files in the specified location.
 
-    Parameters:
-    - img_arr (list): A list of NumPy arrays representing images.
-    - img_name_list (list): A list of image names corresponding to the arrays.
-    - save_location (str): The directory where the .npy files will be saved.
+    Parameters
+    ----------
+    img_arr : list
+        A list of NumPy arrays representing images.
+    img_name_list : list
+        A list of image names corresponding to the arrays.
+    save_location : str
+        The directory where the .npy files will be saved.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the input arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the input arrays are not equal.
 
-    Note:
-    - The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
-    - It then modifies the image names to include the save location and iteratively saves each array.
+    Note
+    ----
+    The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
+    It then modifies the image names to include the save location and iteratively saves each array.
     """
     _check_equal_lengths(img_arr, img_name_list)
 
@@ -179,17 +209,24 @@ def save_tif(img_arr, img_name_list, save_location):
     """
     Save images as .tif files in the specified location.
 
-    Parameters:
-    - img_arr (list): A list of NumPy arrays representing images.
-    - img_name_list (list): A list of image names corresponding to the arrays.
-    - save_location (str): The directory where the .tif files will be saved.
+    Parameters
+    ----------
+    img_arr : list
+        A list of NumPy arrays representing images.
+    img_name_list : list
+        A list of image names corresponding to the arrays.
+    save_location : str
+        The directory where the .tif files will be saved.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the input arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the input arrays are not equal.
 
-    Note:
-    - The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
-    - It then modifies the image names to include the save location and iteratively saves each image as a .tif file.
+    Note
+    ----
+    The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
+    It then modifies the image names to include the save location and iteratively saves each image as a .tif file.
     """
     _check_equal_lengths(img_arr, img_name_list)
     modified_name_list = img_name_list.copy()
@@ -205,19 +242,27 @@ def apply_and_save_all_thresholds(img_arr, img_name_list, output_dir, num_imgs =
     """
     Apply various thresholding methods and save the results as .tif files.
 
-    Parameters:
-    - img_arr (list): A list of NumPy arrays representing the intensified images.
-    - img_name_list (list): A list of image names corresponding to the arrays.
-    - output_dir (str): The directory where the thresholded images will be saved.
-    - num_imgs (int, optional): The number of images to select for thresholding and saving. Defaults to 5.
+    Parameters
+    ----------
+    img_arr : list
+        A list of NumPy arrays representing the intensified images.
+    img_name_list : list
+        A list of image names corresponding to the arrays.
+    output_dir : str
+        The directory where the thresholded images will be saved.
+    num_imgs : int, optional
+        The number of images to select for thresholding and saving. Defaults to 5.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the input arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the input arrays are not equal.
 
-    Note:
-    - The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
-    - It randomly selects a specified number of images from the input arrays.
-    - For each selected image, it applies various thresholding methods and saves the resulting plots as .tif files.
+    Note
+    ----
+    The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
+    It randomly selects a specified number of images from the input arrays.
+    For each selected image, it applies various thresholding methods and saves the resulting plots as .tif files.
     """
     _check_equal_lengths(img_arr, img_name_list)
     if len(img_arr) >= num_imgs:
@@ -243,30 +288,43 @@ def apply_threshold(img_arr, img_name_list, label = 'threshli', method = 'li', p
     """
     Apply a thresholding method to a list of images and return segmented images.
 
-    Parameters:
-    - img_arr (list): A list of NumPy arrays representing the indensified images.
-    - img_name_list (list): A list of image names corresponding to the arrays.
-    - label (str, optional): A label to append to the segmented image names. Defaults to 'threshli'.
-    - print_image (int, optional): Number of segmented images to display. Defaults to 0.
-    - method (str, optional): The thresholding method to use. Defaults to 'li'.
+    Parameters
+    ----------
+    img_arr : list
+        A list of NumPy arrays representing the intensified images.
+    img_name_list : list
+        A list of image names corresponding to the arrays.
+    label : str, optional
+        A label to append to the segmented image names. Defaults to 'threshli'.
+    print_image : int, optional
+        Number of segmented images to display. Defaults to 0.
+    method : str, optional
+        The thresholding method to use. Defaults to 'li'.
 
-    Returns:
-    - tuple: A tuple containing two elements:
-        - segmented_images (list): A list of segmented images.
-        - seg_name_list (list): A list of corresponding segmented image names.
+    Returns
+    -------
+    tuple
+        A tuple containing two elements:
+        - segmented_images : list
+            A list of segmented images.
+        - seg_name_list : list
+            A list of corresponding segmented image names.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the input arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the input arrays are not equal.
 
-    Note:
-    - The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
-    - It applies the specified thresholding method to each image, removes small objects, and fills holes.
-    - The segmented images and their names are returned as lists.
-    - Optionally, a specified number of segmented images can be displayed.
+    Note
+    ----
+    The function first checks if the lengths of `img_arr` and `img_name_list` are equal.
+    It applies the specified thresholding method to each image, removes small objects, and fills holes.
+    The segmented images and their names are returned as lists.
+    Optionally, a specified number of segmented images can be displayed.
 
-    - The returned name list should only be used for saving. Unless the name BASENAME_threshli_skel.npy is 
-    - desired, use the original name list from the take_channel method when passing the img_name_list
-    - to to skeletonize_images method.
+    The returned name list should only be used for saving. Unless the name BASENAME_threshli_skel.npy is 
+    desired, use the original name list from the take_channel method when passing the img_name_list
+    to the skeletonize_images method.
     """
     _check_equal_lengths(img_arr, img_name_list)
     thresh_function = threshold_functions.get(method, filters.threshold_li)
@@ -300,25 +358,37 @@ def skeletonize_images(thresh_arr, img_name_list, label = 'skel', print_image = 
     """
     Skeletonize a list of binary images and return the skeletonized images.
 
-    Parameters:
-    - thresh_arr (list): A list of thresholded binary images.
-    - img_name_list (list): A list of image names corresponding to the arrays (use the name list from take_channel).
-    - label (str, optional): A label to append to the skeletonized image names. Defaults to 'skel'.
-    - print_image (int, optional): Number of skeletonized images to display. Defaults to 0.
+    Parameters
+    ----------
+    thresh_arr : list
+        A list of thresholded binary images.
+    img_name_list : list
+        A list of image names corresponding to the arrays (use the name list from take_channel).
+    label : str, optional
+        A label to append to the skeletonized image names. Defaults to 'skel'.
+    print_image : int, optional
+        Number of skeletonized images to display. Defaults to 0.
 
-    Returns:
-    - tuple: A tuple containing two elements:
-        - skel_imgs (list): A list of skeletonized images.
-        - skel_name_list (list): A list of corresponding skeletonized image names.
+    Returns
+    -------
+    tuple
+        A tuple containing two elements:
+        - skel_imgs : list
+            A list of skeletonized images.
+        - skel_name_list : list
+            A list of corresponding skeletonized image names.
 
-    Raises:
-    - UnequalLengthError: If the lengths of the input arrays are not equal.
+    Raises
+    ------
+    UnequalLengthError
+        If the lengths of the input arrays are not equal.
 
-    Note:
-    - The function first checks if the lengths of `thresh_arr` and `img_name_list` are equal.
-    - It skeletonizes each binary image using morphology.skeletonize.
-    - The skeletonized images and their names are returned as lists.
-    - Optionally, a specified number of skeletonized images can be displayed.
+    Note
+    ----
+    The function first checks if the lengths of `thresh_arr` and `img_name_list` are equal.
+    It skeletonizes each binary image using morphology.skeletonize.
+    The skeletonized images and their names are returned as lists.
+    Optionally, a specified number of skeletonized images can be displayed.
     """
     _check_equal_lengths(thresh_arr, img_name_list)
 
@@ -346,23 +416,32 @@ def display_img_side(array1, array2, index, label1, label2):
     """
     Display two images side by side for visual comparison.
 
-    Parameters:
-    - array1 (list): A list of images or arrays.
-    - array2 (list): Another list of images or arrays.
-    - index (int): Index of the images to display.
-    - label1 (str): Label for the first set of images.
-    - label2 (str): Label for the second set of images.
+    Parameters
+    ----------
+    array1 : list
+        A list of images or arrays.
+    array2 : list
+        Another list of images or arrays.
+    index : int
+        Index of the images to display.
+    label1 : str
+        Label for the first set of images.
+    label2 : str
+        Label for the second set of images.
 
-    Returns:
-    - None: Displays the images using Matplotlib.
+    Returns
+    -------
+    None
+        Displays the images using Matplotlib.
 
-    Note:
-    - The function creates a side-by-side comparison of two images from the input arrays.
-    - The specified index determines which images to display.
-    - Labels for each set of images are provided.
-    - The images are shown using Matplotlib's plt.show().
+    Note
+    ----
+    The function creates a side-by-side comparison of two images from the input arrays.
+    The specified index determines which images to display.
+    Labels for each set of images are provided.
+    The images are shown using Matplotlib's plt.show().
 
-    - This should be usually used when comparing with raw vs thresh or thresh vs skel. 
+    This should be usually used when comparing with raw vs thresh or thresh vs skel.
     """
 
     image1 = array1[index]
@@ -393,11 +472,15 @@ def load_npy_imgs(directory):
     """
     Load files from a given directory of .npy files.
 
-    Parameters:
-    - directory (str): The directory containing files.
+    Parameters
+    ----------
+    directory : str
+        The directory containing files.
 
-    Returns:
-    - list: A list of loaded NumPy arrays or images.
+    Returns
+    -------
+    list
+        A list of loaded NumPy arrays or images.
     """
     file_paths = _get_file_path_list(directory)
     img_name_list = _get_file_path_list(directory, fullpath = False)
@@ -415,17 +498,22 @@ def load_tif_imgs(directory):
     """
     Load files from a given directory of .tif files.
 
-    Parameters:
-    - directory (str): The directory containing files.
+    Parameters
+    ----------
+    directory : str
+        The directory containing files.
 
-    Returns:
-    - list: A list of loaded NumPy arrays or images.
+    Returns
+    -------
+    list
+        A list of loaded NumPy arrays or images.
 
-    Note:
-    - The tif files should be images that have alreldy been intensified.
-    - Use the take_channel images if they are raw. 
-    - This should only be used if the user wants to put intensified, segmented, or skeletonized
-    - images save on a computer into a numpy array to collect data from. 
+    Notes
+    -----
+    - The .tif files should be images that have already been intensified.
+    - Use the `take_channel` images if they are raw.
+    - This function should only be used if the user wants to put intensified, segmented, or skeletonized
+      images saved on a computer into a NumPy array to collect data.
     """
     file_paths = _get_file_path_list(directory)
     img_name_list = _get_file_path_list(directory, fullpath = False)
@@ -447,20 +535,27 @@ def get_skel_df(skel_arr, skel_name_list, show = 0):
     """
     Process a list of skeletonized images, extract properties, and display branch types.
 
-    Parameters:
-    - skel_arr (list): A list of skeletonized images or arrays.
-    - skel_name_list (list): A list of names corresponding to the skeletonized images.
-    - show (int, optional): The number of images to display branch types. Defaults to 0.
+    Parameters
+    ----------
+    skel_arr : list
+        A list of skeletonized images or arrays.
+    skel_name_list : list
+        A list of names corresponding to the skeletonized images.
+    show : int, optional
+        The number of images to display branch types. Defaults to 0.
 
-    Returns:
-    - pd.DataFrame: A Pandas DataFrame containing skeletonization properties.
+    Returns
+    -------
+    pd.DataFrame
+        A Pandas DataFrame containing skeletonization properties.
 
-    Note:
+    Notes
+    -----
     - The function processes a list of skeletonized images and extracts properties using the skan library.
     - Skeletonization properties are summarized, and a Pandas DataFrame is created.
-    - The show parameter determines the number of images for which branch types are displayed.
+    - The `show` parameter determines the number of images for which branch types are displayed.
 
-    - To print out the dataframe, type the name of the df you set and press enter. 
+    - To print out the DataFrame, type the name of the DataFrame you set and press enter.
     """
     for i in range(len(skel_arr)):
         new_skel_img = skel_arr[i].astype('uint8')
@@ -481,5 +576,26 @@ def get_skel_df(skel_arr, skel_name_list, show = 0):
     return df_skel
 
 def save_df(dataframe, name, output_dir):
+    """
+    Save a Pandas DataFrame as a CSV file in the specified location.
+
+    Parameters
+    ----------
+    dataframe : pd.DataFrame
+        The Pandas DataFrame to be saved.
+    name : str
+        The base name of the CSV file (without extension).
+    output_dir : str
+        The directory where the CSV file will be saved.
+
+    Returns
+    -------
+    None
+
+    Note
+    ----
+    - The function appends the '.csv' extension to the provided name.
+    - The resulting CSV file is saved in the specified output directory.
+    """
     name = name + '.csv'
     dataframe.to_csv(os.path.join(output_dir, name))
