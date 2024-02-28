@@ -4,6 +4,8 @@ Functions
 .. currentmodule:: prevampire.prevampire
 
 .. autosummary:: 
+
+    directions
     :toctree: functions/
 
     remove_files

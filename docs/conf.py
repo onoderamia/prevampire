@@ -14,7 +14,7 @@ import os
 import sys
 import numpydoc
 
-sys.path.insert(1, os.path.abspath('..'))
+sys.path.insert(2, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------

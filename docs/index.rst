@@ -13,8 +13,6 @@ Specifically, this package will enable users to:
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-   directions
    functions
 
 
