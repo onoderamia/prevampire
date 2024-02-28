@@ -1,15 +1,19 @@
-Function Reference
-==================
+Functions
+===============
 
-.. autofunction:: prevampire.prevampire.remove_files
-.. autofunction:: prevampire.prevampire.move_files
-.. autofunction:: prevampire.prevampire.take_channel
-.. autofunction:: prevampire.prevampire.save_npy
-.. autofunction:: prevampire.prevampire.save_tif
-.. autofunction:: prevampire.prevampire.apply_and_save_all_thresholds
-.. autofunction:: prevampire.prevampire.apply_threshold
-.. autofunction:: prevampire.prevampire.skeletonize_images
-.. autofunction:: prevampire.prevampire.load_npy_imgs
-.. autofunction:: prevampire.prevampire.load_tif_imgs
-.. autofunction:: prevampire.prevampire.get_skel_df
-.. autofunction:: prevampire.prevampire.save_df
+.. currentmodule:: prevampire.prevampire
+
+.. autosummary:: 
+    :toctree: functions/
+
+    remove_files
+    move_files
+    take_channel
+    save_npy
+    save_tif
+    apply_and_save_all_thresholds
+    apply_threshold
+    skeletonize_images
+    load_npy_imgs
+    load_tif_imgs
+    get_skel_df
