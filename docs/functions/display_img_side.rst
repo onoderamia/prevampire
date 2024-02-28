@@ -1,5 +1,5 @@
 prevampire.display\_img\_side
 ========================================
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: display_img_side

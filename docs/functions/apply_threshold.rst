@@ -1,6 +1,6 @@
 prevampire.apply\_threshold
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: apply_threshold

@@ -17,3 +17,4 @@ Functions
     load_npy_imgs
     load_tif_imgs
     get_skel_df
+    display_img_side

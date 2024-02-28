@@ -14,7 +14,7 @@ Specifically, this package will enable users to:
    :maxdepth: 2
    :caption: Contents:
 
-   prevampire/README
+   directions
    functions
 
 

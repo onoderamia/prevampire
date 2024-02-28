@@ -1,6 +1,6 @@
 prevampire.remove\_files
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: remove_files

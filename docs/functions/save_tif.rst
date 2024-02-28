@@ -1,6 +1,6 @@
 prevampire.save\_tif
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: save_tif
