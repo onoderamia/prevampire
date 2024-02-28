@@ -1,6 +1,6 @@
 prevampire.load\_npy\_imgs
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: load_npy_imgs

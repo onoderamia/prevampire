@@ -1,6 +1,6 @@
 prevampire.skeletonize\_images
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: skeletonize_images

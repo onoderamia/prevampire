@@ -1,6 +1,6 @@
 prevampire.save\_df
 ========================================
 
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autofunction:: save_df

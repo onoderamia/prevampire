@@ -1,6 +1,6 @@
 Functions
 ===============
-.. currentmodule:: prevampire.prevampire
+.. currentmodule:: prevampire
 
 .. autosummary:: 
 
