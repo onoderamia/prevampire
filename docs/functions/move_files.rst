@@ -1,6 +1,6 @@
 prevampire.move\_files
 ========================================
 
-.. currentmodule:: prevampire
+.. currentmodule:: prevampire.prevampire
 
 .. autofunction:: move_files

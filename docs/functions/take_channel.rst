@@ -1,6 +1,6 @@
 prevampire.take\_channel
 ========================================
 
-.. currentmodule:: prevampire
+.. currentmodule:: prevampire.prevampire
 
 .. autofunction:: take_channel
