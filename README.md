@@ -36,7 +36,7 @@ raw_dir = 'file/path'  # file path to .tif images
 
 ## Applying PREVAMPIRE Package
 
-Below are a list of methods you want to apply to get to the desired skeletonization and vampire df and shape modes. Check out [prevampire.py](https://github.com/onoderamia/prevampire/blob/main/prevampire/prevampire.py) for more in depth method comments. 
+Below are a list of methods you want to apply to get to the desired skeletonization and vampire df and shape modes. Check out [prevampire](https://prevampire.readthedocs.io/en/latest/index.html) for more in depth method comments. 
 
 For a specific dataset, the code uses two .npy arrays to keep track of images while applying thresholding and skeletonization. The image array and the name array. These two arrays are always returned in a specific method. 
 
