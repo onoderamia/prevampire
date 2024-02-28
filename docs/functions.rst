@@ -1,7 +1,7 @@
 Function Reference
 ==================
 
-.. automodule:: prevampire
+.. automodule:: prevampire.prevampire
     :members:
     :undoc-members:
     :show-inheritance:
