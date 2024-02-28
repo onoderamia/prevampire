@@ -14,11 +14,23 @@ Specifically, this package will enable users to:
    :maxdepth: 2
    :caption: Contents:
 
-   functions
+   functions/remove_files
+   functions/move_files
+   functions/take_channel
+   functions/save_npy
+   functions/save_tif
+   functions/apply_and_save_all_thresholds
+   functions/apply_threshold
+   functions/skeletonize_images
+   functions/load_npy_imgs
+   functions/load_tif_imgs
+   functions/get_skel_df
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
